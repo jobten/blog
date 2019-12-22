@@ -1,6 +1,6 @@
 <template>
   <div class="login-container">
-    <el-form ref='form' :model="form" :rule="registerRule" class="login-form">
+    <el-form ref='form' :model="form" :rules="registerRule" class="login-form">
       <div class="title-container">
         <img src="/logo.png" alt="">
       </div>
@@ -74,8 +74,47 @@
 
         </el-input>
       </el-form-item>
+      
 
+      <!-- 邮箱验证码 -->
+      <el-form-item prop="password">
+        <span class="svg-container">
+          <i class="el-icon-user">
+          </i>
+        </span>
 
+        <el-input
+          ref = 'password'
+          v-model='form.password'
+          placeholder = '密码'
+          name="password"
+          :key="passwordType"
+          :type="passwordType"
+          >
+        </el-input>
+        <span class="show-pwd" @click="showPwd">
+          <i v-if="passwordType=='password'" class="el-icon-lock"></i>
+          <i v-else class="el-icon-key"></i>
+        </span>
+      </el-form-item>
+
+      <el-form-item prop="repassword">
+        <span class="svg-container">
+          <i class="el-icon-lock">
+          </i>
+        </span>
+        <el-input
+          ref = 'repassword'
+          v-model='form.repassword'
+          placeholder = '再次输入密码'
+          name="repassword"
+          type="password"
+          >
+        </el-input>
+      </el-form-item>
+      <el-button @click.native.prevent='handleRegister' type="primary" sytle="width:100%;margin-bottom:30px">
+        注册
+      </el-button>
     </el-form>
 
 
@@ -94,6 +133,7 @@ export default {
         password:'123456',
         repassword:'123456'
       },
+      passwordType: "password",
       code:{
         captcha:'/api/user/captcha'
       },
@@ -101,8 +141,55 @@ export default {
         email: [
           {required:true, message:'请输入邮箱'},
           {type:'email', message:'请输入正确的邮箱'},
+        ],
+        password:[
+          {required:true, message:'请输入密码'},
+          {max:12, message:'密码长度12以内'},
+        ],
+        emailcode:[
+          {required:true, message:'请输入邮箱验证码'},
+        ],
+        captcha:[
+          {required:true, message:'请输入验证码'},
+        ],
+        repassword:[
+          {
+            required:true,
+            trigger:'blur',
+            validator:(rule,value,callback)=>{
+              if(value!==this.form.password){
+                callback(new Error('两次输入不一致'))
+              }else{
+                callback()
+              }
+            }
+          }
         ]
       }
+    }
+  },
+  methods: {
+    async sendCode() {
+      const ret = await this.$http.get('/user/sendcode?emaile=' + this.form.email)
+      if (ret.data.code === 0) {
+        this.$notify({
+          title: '发送成功',
+          type: 'success'
+        })
+      }
+    },
+    resetCptcha() {
+      console.log('--- resetCptcha')
+    },
+    showPwd() {
+      this.passwordType = this.passwordType==="password"?"text":"password"
+    },
+    handleRegister() {
+      this.$refs.form.validate(async valid => {
+        if (valid) {
+          console.log('loading状态切换')
+        }
+      })
     }
   }
 }
@@ -120,7 +207,7 @@ export default {
       height:50px;
     }
     img{
-            width:90px;
+      width:90px;
       height:50px;
       cursor: pointer;
     }
