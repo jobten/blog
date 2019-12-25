@@ -68,13 +68,13 @@
         <el-input
           ref = 'captcha'
           v-model='form.captcha'
-          placeholder = '邮箱验证码'
+          placeholder = '图片验证码'
           name="captcha"
           >
 
         </el-input>
       </el-form-item>
-      
+
 
       <!-- 邮箱验证码 -->
       <el-form-item prop="password">
@@ -121,6 +121,9 @@
   </div>
 </template>
 <script>
+import md5 from 'md5'
+
+
 export default {
   layout:'login',
   data() {
@@ -170,7 +173,7 @@ export default {
   },
   methods: {
     async sendCode() {
-      const ret = await this.$http.get('/user/sendcode?emaile=' + this.form.email)
+      const ret = await this.$http.get('/user/sendcode?email=' + this.form.email)
       if (ret.data.code === 0) {
         this.$notify({
           title: '发送成功',
@@ -179,7 +182,7 @@ export default {
       }
     },
     resetCptcha() {
-      console.log('--- resetCptcha')
+      this.code.captcha = '/api/user/captcha?_t='+new Date().getTime()
     },
     showPwd() {
       this.passwordType = this.passwordType==="password"?"text":"password"
@@ -188,9 +191,25 @@ export default {
       this.$refs.form.validate(async valid => {
         if (valid) {
           console.log('loading状态切换')
+          const obj = {
+            email: this.form.email,
+            password: md5(this.form.password),
+            emailCode: this.form.emailCode,
+            captcha: this.form.captcha,
+            nickname: this.form.nickname
+          }
+          const ret = await this.$http.post('/user/register', obj)
+          if (ret.data.code === 0) {
+
+          } else {
+            this.$notify({
+              title: ret.data.message,
+              type: 'warning'
+            })
+          }
         }
       })
-    }
+    },
   }
 }
 </script>
