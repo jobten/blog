@@ -8,6 +8,6 @@ module.exports = app => {
     router.get('/', controller.home.index);
     router.get('/user/captcha', controller.user.captcha)
     router.get('/user/sendcode', controller.user.email)
-    router.get('/user/register', controller.user.create)
+    router.post('/user/register', controller.user.create)
 
 };

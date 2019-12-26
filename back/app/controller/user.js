@@ -4,9 +4,15 @@ const BaseController = require('./base')
 const md5 = require('md5')
 
 class UserController extends BaseController {
+    async index() {
+        const { ctx } = this
+        ctx.body = '用户信息'
+    }
 
     async checkEmail(email) {
-        const user = await this.ctx.model.User.findOne({ email })
+        const { ctx } = this
+
+        const user = await ctx.model.User.findOne({ email })
         return user
     }
 
@@ -43,7 +49,7 @@ class UserController extends BaseController {
     }
     async create() {
         const { ctx } = this
-        const { email, password, emalcode, captcha, nickname } = ctx.request.body
+        const { email, password, emailcode, captcha, nickname } = ctx.request.body
 
         if (emailcode !== ctx.session.emailcode) {
             return this.error('邮箱验证码出错')
