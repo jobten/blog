@@ -6,11 +6,8 @@
 module.exports = app => {
 
     const { router, controller } = app
-    console.log('-----------app ', app.config.jwt)
-
-    console.log('--------app ', app.config.jwt.secret)
-
     const jwt = app.middleware.jwt({ app })
+    router.get('/userinfo', controller.user.index)
 
 
     router.get('/', controller.home.index);

@@ -174,7 +174,7 @@ export default {
   methods: {
     async sendCode() {
       const ret = await this.$http.get('/user/sendcode?email=' + this.form.email)
-      if (ret.data.code === 0) {
+      if (ret.code === 0) {
         this.$notify({
           title: '发送成功',
           type: 'success'
@@ -199,11 +199,17 @@ export default {
             nickname: this.form.nickname
           }
           const ret = await this.$http.post('/user/register', obj)
-          if (ret.data.code === 0) {
-
+          if (ret.code === 0) {
+            this.$notify({
+               title:'注册成功',
+                type:'success'
+            })
+            setTimeout(() => {
+              this.$router.push({ path: '/login'})
+            }, 1500)
           } else {
             this.$notify({
-              title: ret.data.message,
+              title: ret.message,
               type: 'warning'
             })
           }

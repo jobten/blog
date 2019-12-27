@@ -64,13 +64,34 @@ export default {
     }
   },
   methods: {
-    handleLogin() {
-      // token需要在axios中拦截并存储在vuex
+    // handleLogin() {
+    //   // token需要在axios中拦截并存储在vuex
+    //   this.$refs.form.validate(async valid => {
+    //     if (vaild) {
+    //       const obj = {
+    //         email: this.form.email,
+    //         password: md5(this.form.password)
+    //       }
+
+    //       const ret = await this.$store.dispatch('user/login', obj)
+    //       if (ret.code === 0) {
+    //         this.$notify({
+    //           title: '登录成功',
+    //           type: 'success'
+    //         })
+    //         setTimeout(() => {
+    //           this.$router.push({ path: '/'})
+    //         }, 1500)
+    //       }
+    //     }
+    //   })
+    // }
+    handleLogin(){
       this.$refs.form.validate(async valid => {
-        if (vaild) {
+        if (valid) {
           const obj = {
             email: this.form.email,
-            password: md5(this.form.email)
+            password: md5(this.form.password)
           }
 
           const ret = await this.$store.dispatch('user/login', obj)
@@ -86,6 +107,6 @@ export default {
         }
       })
     }
-  },
+  }
 }
 </script>

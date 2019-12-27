@@ -38,7 +38,7 @@ module.exports = appInfo => {
             }
         },
         jwt: {
-            secret: 'paxshare'
+            secret: 'paxshare',
         }
     };
 };

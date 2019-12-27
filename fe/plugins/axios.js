@@ -17,6 +17,8 @@ export default ({ store, redirect }) => {
         // 请求添加Token
         const token = window.localStorage.getItem(TOKEN_KEY)
         if (token) {
+            // 判断是否存在token，如果存在的话，则每个http header都加上token
+            // Bearer 是JWT的认证头部信息
             config.headers.common['Authorzation'] = 'Bearer ' + token
         }
 
@@ -46,7 +48,7 @@ export default ({ store, redirect }) => {
         }
         return data
     }, error => {
-        return Promise(error)
+        return Promise.reject(error)
     })
 }
 

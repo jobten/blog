@@ -19,7 +19,7 @@ const mutations = {
         state.avatar = user.avatar
     }
 }
-const acitons = {
+const actions = {
     login: async({ state, commit }, data) => {
         const ret = await http.post('user/login', data)
         console.log('login data - ', data)
@@ -41,5 +41,5 @@ export default {
     namespace: true,
     state,
     mutations,
-    acitons
+    actions
 }
