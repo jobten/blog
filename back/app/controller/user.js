@@ -71,6 +71,36 @@ class UserController extends BaseController {
         }
 
     }
+
+    async login() {
+        const { ctx, app } = this
+        const { email, password } = ctx.request.body
+
+        const user = await ctx.model.User.findOne({
+            email,
+            password: md5(password)
+        })
+
+        if (user) {
+            const { nickname } = user
+            const token = app.jwt.sign({
+                nickname,
+                email,
+                id: user._id
+            }, app.config.jwt.secret, {
+                expiresIn: '10s'
+            })
+            this.success({ token, email })
+        } else {
+            this.error('用户名或者密码错误')
+        }
+    }
+
+    async detail() {
+        const { ctx } = this
+        const user = await this.checkEmail(ctx.stale.email)
+        this.success(user)
+    }
 }
 
 module.exports = UserController
