@@ -1,7 +1,7 @@
 <template>
   <div class="container">
     <div>
-      <nuxt-link to="/register">请先注册</nuxt-link>
+      <nuxt-link to="/register">注册</nuxt-link>
     </div>
   </div>
 </template>

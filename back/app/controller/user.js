@@ -22,7 +22,7 @@ class UserController extends BaseController {
 
         ctx.session.captcha = captcha.text
 
-        console.log('验证码' + captcha.text)
+        console.log('图片验证码' + captcha.text)
         ctx.response.type = 'image/svg+xml'
         ctx.body = captcha.data
     }
@@ -31,10 +31,10 @@ class UserController extends BaseController {
         const email = ctx.query.email
         const code = Math.random().toString().slice(2, 6)
 
-        console.log('邮件' + email + ' 验证码：' + code)
-        const title = '百富分享平台注册验证码'
+        console.log('邮件' + email + ' 邮箱验证码：' + code)
+        const title = '分享平台注册验证码'
         const html = `
-            <h1>百富分享平台注册验证码</h1>
+            <h1>分享平台注册验证码</h1>
             <div>
                 <a href="http://www.pax.cn/">${code}</a>
             </div>
@@ -51,6 +51,9 @@ class UserController extends BaseController {
         const { ctx } = this
         const { email, password, emailcode, captcha, nickname } = ctx.request.body
 
+        console.log('ctx.session.emailcode - ', ctx.session.emailcode)
+
+        console.log('ctx.request.body - ', ctx.request.body)
         if (emailcode !== ctx.session.emailcode) {
             return this.error('邮箱验证码出错')
         }
@@ -88,7 +91,7 @@ class UserController extends BaseController {
                 email,
                 id: user._id
             }, app.config.jwt.secret, {
-                expiresIn: '10s'
+                expiresIn: '1h'
             })
             this.success({ token, email })
         } else {
@@ -98,7 +101,7 @@ class UserController extends BaseController {
 
     async detail() {
         const { ctx } = this
-        const user = await this.checkEmail(ctx.stale.email)
+        const user = await this.checkEmail(ctx.state.email)
         this.success(user)
     }
 }

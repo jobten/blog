@@ -1,9 +1,6 @@
 <template>
 
     <el-container>
-      <!-- <div>
-        {{userinfo}}
-      </div> -->
       <el-header>
         <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item index="0">
@@ -65,9 +62,9 @@ export default {
       // 获取用户个人信息，如果有登录状态
       let token = localStorage.getItem('KKB_USER_TOKEN')
       if(token){
-            // let ret = await this.$axios.get('/api/demoinfo')
         this.$store.dispatch('user/detail')
       }
+      console.log(this.userinfo)
     }
   }
 }

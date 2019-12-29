@@ -9,7 +9,9 @@ let transporter = nodemailer.createTransport({
     secureConnetion: true,
     auth: {
         user: userEmail,
-        pass: "hrvaxbklxvkjbfeb"
+        // pass: "hrvaxbklxvkjbfeb"
+        // pass: "kkbzrffedvapbeaf"
+        pass: "vaeeetoukaqjbbii"
     }
 })
 
@@ -33,7 +35,7 @@ class ToolsService extends Service {
             html
         }
         try {
-            await transporter.sendMail(mailOptions)
+            const ret = await transporter.sendMail(mailOptions)
             return true
         } catch (error) {
             console.log(error)

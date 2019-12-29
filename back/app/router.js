@@ -16,5 +16,6 @@ module.exports = app => {
     router.post('/user/register', controller.user.create)
 
     router.get('/user/detail', jwt, controller.user.detail)
-    router.post('/user/login', jwt, controller.user.login)
+    router.post('/user/login', controller.user.login)
+    router.post('/article/create', jwt, controller.article.create)
 };

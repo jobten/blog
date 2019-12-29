@@ -76,7 +76,7 @@
       </el-form-item>
 
 
-      <!-- 邮箱验证码 -->
+      <!-- 密码 -->
       <el-form-item prop="password">
         <span class="svg-container">
           <i class="el-icon-user">
@@ -194,7 +194,7 @@ export default {
           const obj = {
             email: this.form.email,
             password: md5(this.form.password),
-            emailCode: this.form.emailCode,
+            emailcode: this.form.emailcode,
             captcha: this.form.captcha,
             nickname: this.form.nickname
           }

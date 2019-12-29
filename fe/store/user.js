@@ -22,15 +22,12 @@ const mutations = {
 const actions = {
     login: async({ state, commit }, data) => {
         const ret = await http.post('user/login', data)
-        console.log('login data - ', data)
-
         commit('SET_TOKEN', ret.data.token)
         return ret
     },
     detail: async({ state, commit }, data) => {
         const ret = await http.get('/user/detail')
         if (ret.code === 0) {
-            console.log('setuser', ret.data)
             commit('SET_USER', ret.data)
             return ret
         }

@@ -1,5 +1,6 @@
 import Vue from 'vue'
 import axios from 'axios'
+import {MessageBox} from 'element-ui'
 
 let service = axios.create({
     timeout: 5000,
@@ -12,14 +13,14 @@ const TOKEN_KEY = 'KKB_USER_TOKEN'
 // @ todo 拦截器 管理token
 export default ({ store, redirect }) => {
     service.interceptors.request.use(config => {
-        console.log('请求拦截');
+        console.log('请求拦截', config);
 
         // 请求添加Token
         const token = window.localStorage.getItem(TOKEN_KEY)
         if (token) {
             // 判断是否存在token，如果存在的话，则每个http header都加上token
             // Bearer 是JWT的认证头部信息
-            config.headers.common['Authorzation'] = 'Bearer ' + token
+            config.headers.common['Authorization'] = 'Bearer ' + token
         }
 
         return config
@@ -28,11 +29,11 @@ export default ({ store, redirect }) => {
     })
 
     service.interceptors.response.use(async response => {
-        console.log('响应拦截');
+        console.log('响应拦截', response);
 
         const { data, config } = response
         if (data.code === 0) {
-            if (config.url === 'api/user/login') {
+            if (config.url === '/api/user/login') {
                 localStorage.setItem(TOKEN_KEY, data.data.token)
             }
         } else if (data.code === -666) {
