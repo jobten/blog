@@ -30,6 +30,13 @@ class ArticleController extends BaseController {
             this.error('创建失败')
         }
     }
+
+    async detail() {
+        const { ctx } = this
+        const { id } = ctx.params
+        let info = await ctx.model.Article.findById(id).populate('author')
+        this.success(info)
+    }
 }
 
 module.exports = ArticleController;

@@ -8,11 +8,16 @@ module.exports = app => {
         email: { type: String, require: true },
         password: { type: String, require: true, select:false },
         nickname: { type: String, require: true },
-        avatar:{type:String, required:false, default:'/user.png'}
-
-        // 关注的人，
-        // 点赞文章
-        // 点赞的答案
+        avatar:{type:String, required:false, default:'/user.png'},
+        following: {
+            type: [{ type: Schema.Types.ObjectId, ref: 'User' }]
+        },
+        likeArticle:{
+            type: [{ type: Schema.Types.ObjectId, ref: 'Article' }]
+        },
+        dislikeArticle:{
+            type: [{ type: Schema.Types.ObjectId, ref: 'Article' }]
+        }
 
     }, { timestamps: true })
 

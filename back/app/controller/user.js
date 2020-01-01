@@ -104,6 +104,20 @@ class UserController extends BaseController {
         const user = await this.checkEmail(ctx.state.email)
         this.success(user)
     }
+
+    async articleStatus() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        let like = !! me.likeArticle.find(id => id.toString() === ctx.params.id)
+        let dislike = !!me.dislikeArticle.find(id=>id.toString()==ctx.params.id)   
+        this.success({
+          like,dislike
+        }) 
+    }
+
+    async isFollow() {
+        
+    }
 }
 
 module.exports = UserController

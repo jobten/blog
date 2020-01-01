@@ -15,10 +15,10 @@ module.exports = app=>{
       // 作者
       author:{
         type:Schema.Types.ObjectId, ref:'User',required:true
-      }
-      // 关注的人，
-      // 点赞文章
-      // 点赞的答案
+      },
+      views: { type: Number, required:false, default: 1},
+      like: { type: Number, required:false, default: 0},
+      dislike: { type: Number, required:false, default: 0},
   
     }, { timestamps:true } )
   
