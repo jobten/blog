@@ -13,7 +13,7 @@ const TOKEN_KEY = 'KKB_USER_TOKEN'
 // @ todo 拦截器 管理token
 export default ({ store, redirect }) => {
     service.interceptors.request.use(config => {
-        console.log('请求拦截', config);
+        // console.log('请求拦截', config);
 
         // 请求添加Token
         const token = window.localStorage.getItem(TOKEN_KEY)
@@ -29,7 +29,7 @@ export default ({ store, redirect }) => {
     })
 
     service.interceptors.response.use(async response => {
-        console.log('响应拦截', response);
+        // console.log('响应拦截', response);
 
         const { data, config } = response
         if (data.code === 0) {

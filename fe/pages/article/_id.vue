@@ -77,7 +77,7 @@ export default {
 
         async checkFollowStatus() {
             const isFollow = await this.$http.get('/user/isfollow/' + this.article.author._id)
-            if (isFollow.code) {
+            if (isFollow) {
                 this.isFollow = isFollow.data.isFollow
             }
         },
@@ -92,7 +92,7 @@ export default {
         },
 
         async likeAction() {
-            let type = likeStatus ? 'delete': 'put'
+            let type = this.likeStatus ? 'delete': 'put'
             const ret = await this.$http[type]('/user/likeArticle/' + this.id)
             if (ret.code == 0) {
                 this.getLikeStatus()

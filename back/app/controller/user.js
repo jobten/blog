@@ -108,15 +108,108 @@ class UserController extends BaseController {
     async articleStatus() {
         const { ctx } = this
         const me = await ctx.model.User.findById(ctx.state.userid)
-        let like = !! me.likeArticle.find(id => id.toString() === ctx.params.id)
-        let dislike = !!me.dislikeArticle.find(id=>id.toString()==ctx.params.id)   
+        const like = !! me.likeArticle.find(id => id.toString() === ctx.params.id)
+        const dislike = !!me.dislikeArticle.find(id=>id.toString()==ctx.params.id)   
         this.success({
-          like,dislike
+          like,
+          dislike
         }) 
     }
 
     async isFollow() {
-        
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const isFollow = !! me.following.find(id => id.toString() === ctx.params.id)
+
+        this.success({
+            isFollow
+        })
+    }
+
+    async follow() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const isFollow = !! me.following.find(id => id.toString() === ctx.params.id)
+
+        if (!isFollow) {
+            me.following.push(ctx.params.id)
+            me.save()
+            this.message('关注成功')
+        }
+    }
+
+    async unfollow() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const index = me.following.map(id => id.toString()).indexOf(ctx.params.id)
+        if (index > -1) {
+            me.following.splice(ctx.state.userid)
+            me.save()
+            this.message('取消关注成功')
+        }
+    }
+
+    async likeArticle() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const like = me.likeArticle.find(id => id.toString() === ctx.params.id)
+        if (!like) {
+            me.likeArticle.push(this.ctx.params.id)
+            me.save()
+            await ctx.model.Article.findByIdAndUpdate(ctx.params.id, { $inc: { like: 1 } });
+            return this.message('成功点赞')
+        }
+        this.message('已经赞过了')
+    }
+
+    async cancelLikeArticle() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const index = me.likeArticle.map(id => id.toString()).indexOf(ctx.params.id)
+        if (index > -1 ) {
+            me.likeArticle.splice(this.ctx.params.id)
+            me.save()
+            await ctx.model.Article.findByIdAndUpdate(ctx.params.id, { $inc: { like: -1 } });
+            return this.message('成功取消点赞')
+        }
+        this.message('已经取消了')
+    }
+    async dislikeArticle() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const dislike = me.dislikeArticle.find(id => id.toString() === ctx.params.id)
+        if (!dislike) {
+            me.dislikeArticle.push(this.ctx.params.id)
+            me.save()
+            await ctx.model.Article.findByIdAndUpdate(ctx.params.id, { $inc: { dislike: 1 } });
+            return this.message('成功踩')
+        }
+        this.message('已经踩了')
+    }
+    async cancelDislikeArticle() {
+        const { ctx } = this
+        const me = await ctx.model.User.findById(ctx.state.userid)
+        const index = me.dislikeArticle.map(id => id.toString()).indexOf(ctx.params.id)
+        if (index > -1 ) {
+            me.dislikeArticle.splice(this.ctx.params.id)
+            me.save()
+            await ctx.model.Article.findByIdAndUpdate(ctx.params.id, { $inc: { dislike: -1 } });
+            return this.message('成功取消点赞')
+        }
+        this.message('已经取消了')
+    }
+
+    async following(){
+        const {ctx} = this    
+        const users = await ctx.model.User.findById(ctx.params.id).populate('following');
+        this.success(users.following)
+    }
+    
+    async followers(){
+    const {ctx} = this
+    const users = await ctx.model.User.find({ following: ctx.params.id });
+    this.success(users)
+
     }
 }
 

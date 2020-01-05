@@ -17,7 +17,15 @@ const mutations = {
         state.email = user.email
         state.nickname = user.nickname
         state.avatar = user.avatar
-    }
+    },
+    LOGOUT(state){
+        state.id = ''
+        state.token = ''
+        state.email = ''
+        state.nickname = ''
+        state.avatar = ''
+    
+    },
 }
 const actions = {
     login: async({ state, commit }, data) => {

@@ -4,6 +4,11 @@ const BaseController = require('./base')
 const marked = require('marked')
 
 class ArticleController extends BaseController {
+    async index() {
+        const {ctx} = this
+        let info = await ctx.model.Article.find().populate('author')
+        this.success(info)
+    }
     async create() {        
         const { ctx } = this
         const { userid } = ctx.state

@@ -12,17 +12,17 @@
         </el-menu-item>
 
 
-        <el-menu-item v-if="userinfo.id" index="3" class="pull-right">
-          <nuxt-link to="/user">退出</nuxt-link>
-        </el-menu-item>
-        <el-menu-item v-if="userinfo.id" index="4" class="pull-right">
-          <nuxt-link to="/user">{{userinfo.nickname}}</nuxt-link>
+        <el-menu-item @click="logout" v-if="userinfo.id" index="5" class="pull-right">
+            <span>退出</span>
         </el-menu-item>
 
         <el-menu-item v-if="userinfo.id" index="3" class="pull-right">
           <nuxt-link to="/editor/new">
             <el-button type='primary'>写文章</el-button>
           </nuxt-link>
+          <UserDisplay :user="userinfo">
+
+          </UserDisplay>
         </el-menu-item>
 
         <el-menu-item v-if="!userinfo.id" index="2" class="pull-right">
@@ -39,19 +39,24 @@
 
         <nuxt />
       </el-main>
-      <el-footer>
-        底部信息
-      </el-footer>
     </el-container>
 
 
 
 </template>
 <script>
+import UserDisplay from '~/components/UserDisplay.vue'
+
+
 export default {
+  components:{
+    UserDisplay
+  },
+
   mounted(){
     this.getUserInfo()
   },
+
   computed:{
     userinfo(){
       return this.$store.state.user
@@ -64,7 +69,10 @@ export default {
       if(token){
         this.$store.dispatch('user/detail')
       }
-      console.log(this.userinfo)
+    },
+    logout(){
+      localStorage.removeItem('KKB_USER_TOKEN')
+      this.$store.commit('user/LOGOUT')
     }
   }
 }
@@ -96,4 +104,11 @@ html {
 a{
   text-decoration: none;
 }
+i.rotate180{
+  transform: rotate(180deg);
+}
+.el-icon-thumb{
+  letter-spacing: 5px;
+}
+
 </style>

@@ -6,7 +6,7 @@
       </div>
       <el-form-item prop="email">
         <span class="svg-container">
-          <i class="el-icon-moble">
+          <i class="el-icon-mobile">
           </i>
         </span>
         <el-input
