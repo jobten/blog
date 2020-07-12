@@ -23,6 +23,11 @@ module.exports = appInfo => {
         // myAppName: 'egg',
     };
 
+    config.cluster = {
+        listen: {
+            port: 8080
+        }
+    }
     return {
         ...config,
         ...userConfig,
@@ -34,7 +39,9 @@ module.exports = appInfo => {
         mongoose: {
             client: {
                 url: 'mongodb://127.0.0.1:27017/test',
-                options: {}
+                options: {
+                    useUnifiedTopology: true
+                }
             }
         },
         jwt: {
