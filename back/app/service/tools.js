@@ -6,12 +6,12 @@ const userEmail = '1017665401@qq.com'
 let transporter = nodemailer.createTransport({
     service: 'qq',
     port: 465,
-    secureConnetion: true,
+    // secureConnetion: true,
     auth: {
         user: userEmail,
         // pass: "hrvaxbklxvkjbfeb"
         // pass: "kkbzrffedvapbeaf"
-        pass: "vaeeetoukaqjbbii"
+        pass: "fjmbvtmmdnkhbfdj"
     }
 })
 

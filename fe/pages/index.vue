@@ -11,7 +11,7 @@ import ArticleItem from '~/components/ArticleItem.vue'
 
 export default {
   async asyncData({app,  params, store}){
-    return await app.$axios.get('/api/article')
+    return await app.$axios.get('/user/article')
       .then(ret => ({
           articles: ret.data.data
         }))

@@ -66,7 +66,7 @@ export default {
         },
 
         async loadArticle(){
-            let ret = await this.$http.get('/article')
+            let ret = await this.$http.get('user/article')
             if(ret.code==0){
                 this.articles = ret.data
             }

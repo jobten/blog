@@ -122,6 +122,7 @@
 </template>
 <script>
 import md5 from 'md5'
+import { log } from 'util'
 
 
 export default {
@@ -203,7 +204,7 @@ export default {
             this.$notify({
                title:'注册成功',
                 type:'success'
-            })
+            })            
             setTimeout(() => {
               this.$router.push({ path: '/login'})
             }, 1500)
