@@ -2,7 +2,7 @@
   <div class="login-container">
     <el-form ref='form' :model="form" :rules="registerRule" class="login-form">
       <div class="title-container">
-        <img src="/logo.png" alt="">
+        <img src="http://pax.cn/zh/images/logo2.png" alt="">
       </div>
       <el-form-item prop="email">
         <span class="svg-container">
@@ -304,8 +304,7 @@ export default {
     text-align: center;
     margin-bottom:20px;
     img{
-      width:200px;
-
+      width:140px;
     }
 
   }

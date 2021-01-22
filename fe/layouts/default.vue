@@ -4,7 +4,7 @@
       <el-header>
         <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item index="0">
-            <img class="logo" src="/logo.png" alt="">
+            <img class="logo" src="http://pax.cn/zh/images/logo2.png" alt="">
           </el-menu-item>
 
         <el-menu-item index="1">
@@ -99,7 +99,7 @@ html {
   margin: 0;
 }
 .logo{
-  height:37px;
+  height:48px;
 }
 a{
   text-decoration: none;

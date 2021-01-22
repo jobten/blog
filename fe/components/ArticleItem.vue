@@ -1,22 +1,21 @@
 <template>
     <div :key="article._id" class="article-item">
-        <nuxt-link :to="'/article/' + article._id">
+        <nuxt-link :to="'/article/' + this.article._id">
             <h3>
-                {{ article.title }}
+                {{ this.article.title }}
             </h3>
         </nuxt-link>
         <p>
             <span class="user">
-                {{article.author.nickname}}
-                <img class="user-avatar" :src="article.author.avatar" alt="">
-
+                {{this.article.author.nickname}}
+                <img class="user-avatar" :src="this.article.author.avatar" alt="">
             </span>
             <span class="action">
-                <i class="el-icon-view">{{article.views}}</i>
+                <i class="el-icon-view">{{this.article.views}}</i>
             </span>
             
             <span class="action">
-                <i class="el-icon-thumb">{{article.like}}</i>
+                <i class="el-icon-thumb">{{this.article.like}}</i>
             </span>
 
             <span class="action">
@@ -30,7 +29,10 @@
 </template>
 <script>
 export default {
-    props: ['article']
+    props: ['article'],
+    mounted() {
+        console.log('article - ', this.article)
+    }
 }
 </script>
 

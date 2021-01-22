@@ -18,6 +18,7 @@ module.exports = app => {
     router.post('/user/login', controller.user.login)
     router.get('/user/detail', jwt, controller.user.detail)
     router.get('/user/article/:id', jwt, controller.user.articleStatus)
+    router.get('/user/article/:id', jwt, controller.user.articleStatus)
     router.get('/user/isfollow/:id',jwt, controller.user.isFollow)
     router.put('/user/follow/:id', jwt, controller.user.follow)
     router.delete('/user/follow/:id', jwt, controller.user.unfollow)

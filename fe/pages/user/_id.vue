@@ -41,7 +41,6 @@ export default {
         this.userid = userid
         if(userid){
             this.loadFollowing()
-
             this.loadFollowers()
             this.loadArticle()
         }
@@ -50,24 +49,24 @@ export default {
         handelClick() {
 
         },
-        async loadFollowing() {
-            let ret = await this.$http.get('/user/'+this.userid+'/followers')
-            if(ret.code==0){
+        async loadFollowers() {
+            let ret = await this.$http.get('/user/' + this.userid + '/followers')
+            if(ret.code === 0){
                 this.followers = ret.data
             }
         },
 
-        async loadFollowers() {
+        async loadFollowing() {
             // 关注
-            let ret = await this.$http.get('/user/'+this.userid+'/following')
-            if(ret.code==0){
+            let ret = await this.$http.get('/user/' + this.userid + '/following')
+            if(ret.code === 0){
                 this.following = ret.data
             }
         },
 
         async loadArticle(){
-            let ret = await this.$http.get('user/article')
-            if(ret.code==0){
+            let ret = await this.$http.get('/article')
+            if(ret.code === 0){
                 this.articles = ret.data
             }
         }
