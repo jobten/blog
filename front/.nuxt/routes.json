@@ -1,0 +1,44 @@
+[
+  {
+    "name": "login",
+    "path": "/login",
+    "component": "/Users/mac/Desktop/blog/front/pages/login.vue",
+    "chunkName": "pages/login"
+  },
+  {
+    "name": "register",
+    "path": "/register",
+    "component": "/Users/mac/Desktop/blog/front/pages/register.vue",
+    "chunkName": "pages/register"
+  },
+  {
+    "name": "uc",
+    "path": "/uc",
+    "component": "/Users/mac/Desktop/blog/front/pages/uc.vue",
+    "chunkName": "pages/uc"
+  },
+  {
+    "name": "editor-new",
+    "path": "/editor/new",
+    "component": "/Users/mac/Desktop/blog/front/pages/editor/new.vue",
+    "chunkName": "pages/editor/new"
+  },
+  {
+    "name": "article-id",
+    "path": "/article/:id?",
+    "component": "/Users/mac/Desktop/blog/front/pages/article/_id.vue",
+    "chunkName": "pages/article/_id"
+  },
+  {
+    "name": "user-id",
+    "path": "/user/:id?",
+    "component": "/Users/mac/Desktop/blog/front/pages/user/_id.vue",
+    "chunkName": "pages/user/_id"
+  },
+  {
+    "name": "index",
+    "path": "/",
+    "component": "/Users/mac/Desktop/blog/front/pages/index.vue",
+    "chunkName": "pages/index"
+  }
+]
