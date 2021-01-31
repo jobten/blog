@@ -16,7 +16,7 @@ module.exports = appInfo => {
     listen: {
       path: '',
       port: 8090,
-      hostname: '127.0.0.1',
+      hostname: 'localhost',
     },
   }
   // use for cookie sign key, should change to your own and keep security
