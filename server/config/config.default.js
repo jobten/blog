@@ -14,7 +14,7 @@ module.exports = appInfo => {
 
   config.cluster = {
     listen: {
-      port: 8090,
+      port: 7001,
       hostname: '127.0.0.1',
     },
   }
