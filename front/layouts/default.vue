@@ -7,7 +7,8 @@
       <el-header>
         <el-menu class="el-menu-demo" mode="horizontal">
           <el-menu-item index="0">
-            <img class="logo" src="/logo.png" alt="">
+            <!-- <img class="logo" src="/logo.png" alt=""> -->
+            <img class="logo" src="/favicon.ico" alt="">
           </el-menu-item>
 
         <el-menu-item index="1">
