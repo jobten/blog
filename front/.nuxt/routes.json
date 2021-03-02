@@ -2,50 +2,50 @@
   {
     "name": "login",
     "path": "/login",
-    "component": "/Users/mac/Desktop/blog/front/pages/login.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\login.vue",
     "chunkName": "pages/login",
-    "_name": "_98ffbed4"
+    "_name": "_2a7cf834"
   },
   {
     "name": "register",
     "path": "/register",
-    "component": "/Users/mac/Desktop/blog/front/pages/register.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\register.vue",
     "chunkName": "pages/register",
-    "_name": "_69a12886"
+    "_name": "_e8357994"
   },
   {
     "name": "uc",
     "path": "/uc",
-    "component": "/Users/mac/Desktop/blog/front/pages/uc.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\uc.vue",
     "chunkName": "pages/uc",
-    "_name": "_41404f31"
+    "_name": "_049a2de1"
   },
   {
     "name": "editor-new",
     "path": "/editor/new",
-    "component": "/Users/mac/Desktop/blog/front/pages/editor/new.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\editor\\\\new.vue",
     "chunkName": "pages/editor/new",
-    "_name": "_3b6b77a1"
+    "_name": "_48d85890"
   },
   {
     "name": "article-id",
     "path": "/article/:id?",
-    "component": "/Users/mac/Desktop/blog/front/pages/article/_id.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\article\\\\_id.vue",
     "chunkName": "pages/article/_id",
-    "_name": "_824d3ae4"
+    "_name": "_711f4cd2"
   },
   {
     "name": "user-id",
     "path": "/user/:id?",
-    "component": "/Users/mac/Desktop/blog/front/pages/user/_id.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\user\\\\_id.vue",
     "chunkName": "pages/user/_id",
-    "_name": "_0a6835d9"
+    "_name": "_3ba3e84c"
   },
   {
     "name": "index",
     "path": "/",
-    "component": "/Users/mac/Desktop/blog/front/pages/index.vue",
+    "component": "C:\\\\Users\\\\huangwc\\\\Desktop\\\\blog\\\\front\\\\pages\\\\index.vue",
     "chunkName": "pages/index",
-    "_name": "_2c4f0502"
+    "_name": "_2119e0cf"
   }
 ]
