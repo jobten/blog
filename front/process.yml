@@ -1,6 +1,6 @@
 apps:
   - script : ./server/index.js
-		name: 'will space'
+    name: 'will space'
     instances: 2
     watch : true
     env :
