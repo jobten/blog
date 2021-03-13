@@ -4,13 +4,13 @@ import { normalizeURL, decode } from '@nuxt/ufo'
 import { interopDefault } from './utils'
 import scrollBehavior from './router.scrollBehavior.js'
 
-const _2a7cf834 = () => interopDefault(import('..\\pages\\login.vue' /* webpackChunkName: "pages/login" */))
-const _e8357994 = () => interopDefault(import('..\\pages\\register.vue' /* webpackChunkName: "pages/register" */))
-const _049a2de1 = () => interopDefault(import('..\\pages\\uc.vue' /* webpackChunkName: "pages/uc" */))
-const _48d85890 = () => interopDefault(import('..\\pages\\editor\\new.vue' /* webpackChunkName: "pages/editor/new" */))
-const _711f4cd2 = () => interopDefault(import('..\\pages\\article\\_id.vue' /* webpackChunkName: "pages/article/_id" */))
-const _3ba3e84c = () => interopDefault(import('..\\pages\\user\\_id.vue' /* webpackChunkName: "pages/user/_id" */))
-const _2119e0cf = () => interopDefault(import('..\\pages\\index.vue' /* webpackChunkName: "pages/index" */))
+const _98ffbed4 = () => interopDefault(import('../pages/login.vue' /* webpackChunkName: "pages/login" */))
+const _69a12886 = () => interopDefault(import('../pages/register.vue' /* webpackChunkName: "pages/register" */))
+const _41404f31 = () => interopDefault(import('../pages/uc.vue' /* webpackChunkName: "pages/uc" */))
+const _3b6b77a1 = () => interopDefault(import('../pages/editor/new.vue' /* webpackChunkName: "pages/editor/new" */))
+const _824d3ae4 = () => interopDefault(import('../pages/article/_id.vue' /* webpackChunkName: "pages/article/_id" */))
+const _0a6835d9 = () => interopDefault(import('../pages/user/_id.vue' /* webpackChunkName: "pages/user/_id" */))
+const _2c4f0502 = () => interopDefault(import('../pages/index.vue' /* webpackChunkName: "pages/index" */))
 
 // TODO: remove in Nuxt 3
 const emptyFn = () => {}
@@ -30,31 +30,31 @@ export const routerOptions = {
 
   routes: [{
     path: "/login",
-    component: _2a7cf834,
+    component: _98ffbed4,
     name: "login"
   }, {
     path: "/register",
-    component: _e8357994,
+    component: _69a12886,
     name: "register"
   }, {
     path: "/uc",
-    component: _049a2de1,
+    component: _41404f31,
     name: "uc"
   }, {
     path: "/editor/new",
-    component: _48d85890,
+    component: _3b6b77a1,
     name: "editor-new"
   }, {
     path: "/article/:id?",
-    component: _711f4cd2,
+    component: _824d3ae4,
     name: "article-id"
   }, {
     path: "/user/:id?",
-    component: _3ba3e84c,
+    component: _0a6835d9,
     name: "user-id"
   }, {
     path: "/",
-    component: _2119e0cf,
+    component: _2c4f0502,
     name: "index"
   }],
 
